@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import usePlatformDetails from "../hooks/usePlatformDetails.ts";
+
+<Meta title="Hooks/usePlatformDetails" component={usePlatformDetails} />
+
+# `usePlatformDetails` Hook
+
+The `usePlatformDetails` hook provides information about the user's platform. It returns the following details:
+
+- **userAgent**: The user agent string of the browser/platform.
+- **language**: The browser's language preference.
+- **onLine**: The user's current online status (true for online, false for offline).
+
+## Example Usage
+
+Here’s an example of how to use the `usePlatformDetails` hook in your React component:
+
+```tsx
+import React from "react";
+import { usePlatformDetails } from "react-util-hooks";
+
+const MyComponent: React.FC = () => {
+  const { userAgent, language, onLine } = usePlatformDetails();
+
+  return (
+    <div>
+      <h3>Platform Details:</h3>
+      <ul>
+        <li>
+          <strong>User Agent:</strong> {userAgent}
+        </li>
+        <li>
+          <strong>Language:</strong> {language}
+        </li>
+        <li>
+          <strong>Online Status:</strong> {onLine ? "Online" : "Offline"}
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+export default MyComponent;
+```

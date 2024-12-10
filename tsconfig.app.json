@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2020", // Ensure compatibility with modern JavaScript environments
+    "useDefineForClassFields": true, // For ES class field support
+    "lib": ["ES2020", "DOM", "DOM.Iterable"], // Include relevant libraries
+    "module": "ESNext", // Module format compatible with ESNext (required for modern bundlers)
+    "skipLibCheck": true, // Skip type checking for declaration files
+    "declaration": true, // Generate declaration files (.d.ts)
+    "declarationMap": true, // Generate source maps for declaration files
+    "outDir": "./dist", // Output directory for compiled files
+    "jsx": "react-jsx", // JSX transform (React 17+)
+
+    /* Bundler mode */
+    "moduleResolution": "bundler", // Module resolution for bundlers (Vite/Rollup)
+    "allowImportingTsExtensions": true, // Allow importing TypeScript extensions
+    "isolatedModules": true, // Ensure each file is treated as a module
+    "moduleDetection": "force", // Force module detection mode
+    "noEmit": true, // Prevent emitting JavaScript files (we use Rollup/Vite for this)
+
+    /* Linting */
+    "strict": true, // Enable strict type checking
+    "noUnusedLocals": true, // Disallow unused local variables
+    "noUnusedParameters": true, // Disallow unused function parameters
+    "noFallthroughCasesInSwitch": true, // Prevent fallthrough in switch statements
+    "noUncheckedSideEffectImports": true // Prevent importing modules with unchecked side effects
+  },
+  "include": [
+    "src/**/*" // Include all TypeScript files in the src folder
+  ],
+  "exclude": [
+    "**/*.test.ts", // Exclude test files from compilation
+    "**/*.test.tsx" // Exclude test files from compilation
+  ]
+}
