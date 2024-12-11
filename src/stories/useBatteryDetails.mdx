@@ -1,0 +1,59 @@
+import { Meta } from "@storybook/addon-docs";
+import useBatteryDetails from "../hooks/useBatteryDetails";
+
+<Meta title="Hooks/useBatteryDetails" component={useBatteryDetails} />
+
+# `useBatteryDetails`
+
+The `useBatteryDetails` hook provides detailed information about the device's battery status, including charging status, charging time, discharging time, and battery level. This hook leverages the [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API).
+
+---
+
+## Usage
+
+### Example
+
+```tsx
+import React from "react";
+import useBatteryDetails from "react-util-hooks";
+
+const BatteryDetailsComponent: React.FC = () => {
+  const batteryDetails = useBatteryDetails();
+
+  if (!batteryDetails) {
+    return <div>Battery details are not available or not supported.</div>;
+  }
+
+  const { charging, chargingTime, dischargingTime, level } = batteryDetails;
+
+  const formatTime = (time: number | null): string => {
+    if (time === null) return "N/A";
+    if (time === Infinity) return "Unknown";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes} min ${seconds} sec`;
+  };
+
+  return (
+    <div>
+      <h3>Battery Details</h3>
+      <ul>
+        <li>
+          <strong>Charging:</strong> {charging ? "Yes" : "No"}
+        </li>
+        <li>
+          <strong>Charging Time:</strong> {formatTime(chargingTime)}
+        </li>
+        <li>
+          <strong>Discharging Time:</strong> {formatTime(dischargingTime)}
+        </li>
+        <li>
+          <strong>Battery Level:</strong> {level !== null ? `${level}%` : "N/A"}
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+export default BatteryDetailsComponent;
+```
