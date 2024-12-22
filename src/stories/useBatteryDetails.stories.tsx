@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useBatteryDetails from "../hooks/useBatteryDetails";
+import { useBatteryDetails } from "../hooks";
 import { BatteryDetails } from "../types";
 
 export default {

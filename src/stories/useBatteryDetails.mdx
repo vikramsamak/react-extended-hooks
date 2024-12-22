@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/addon-docs";
-import useBatteryDetails from "../hooks/useBatteryDetails";
+import { useBatteryDetails } from "../hooks";
 
 <Meta title="Hooks/useBatteryDetails" component={useBatteryDetails} />
 
@@ -8,7 +8,6 @@ import useBatteryDetails from "../hooks/useBatteryDetails";
 The `useBatteryDetails` hook provides detailed information about the device's battery status, including charging status, charging time, discharging time, and battery level. It also supports user-defined callback functions that are triggered when any of the battery properties change.
 
 This hook leverages the [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API).
-
 
 ## Example Usage
 
@@ -119,7 +118,7 @@ The hook accepts an optional configuration object with the following callbacks:
   Called when the charging time changes.
 
 - **`onDischargingTimeChange`**: `(dischargingTime: number | null) => void`  
-  Called when the discharging time changes.  
+  Called when the discharging time changes.
 
 ### Returns
 

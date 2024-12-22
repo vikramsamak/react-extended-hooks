@@ -1,5 +1,5 @@
 import React from "react";
-import usePlatformDetails from "../hooks/usePlatformDetails";
+import { usePlatformDetails } from "../hooks";
 import { PlatformDetails } from "../types";
 
 export default {

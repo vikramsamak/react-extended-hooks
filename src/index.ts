@@ -3,6 +3,7 @@ export {
   usePlatformDetails,
   useBatteryDetails,
   useGeolocationDetails,
+  useSpeechSynthesis,
 } from "./hooks";
 
 //TYPES
@@ -12,4 +13,6 @@ export type {
   useBatteryDetailsProps,
   GeolocationDetails,
   useGeolocationProps,
+  SpeechSynthesisDetails,
+  useSpeechSynthesisProps,
 } from "./types";

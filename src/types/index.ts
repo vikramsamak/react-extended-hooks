@@ -9,3 +9,8 @@ export type {
   GeolocationDetails,
   useGeolocationProps,
 } from "./useGeolocationDetails.types";
+
+export type {
+  SpeechSynthesisDetails,
+  useSpeechSynthesisProps,
+} from "./useSpeechSynthesis.types";
