@@ -1,6 +1,6 @@
 import React from "react";
 import useBatteryDetails from "../hooks/useBatteryDetails";
-import { BatteryDetails } from "../types/types";
+import { BatteryDetails } from "../types";
 
 export default {
   title: "Hooks/useBatteryDetails",

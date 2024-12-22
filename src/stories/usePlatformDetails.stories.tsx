@@ -1,6 +1,6 @@
 import React from "react";
 import usePlatformDetails from "../hooks/usePlatformDetails";
-import { PlatformDetails } from "../types/types";
+import { PlatformDetails } from "../types";
 
 export default {
   title: "Hooks/usePlatformDetails",

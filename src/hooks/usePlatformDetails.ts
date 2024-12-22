@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { PlatformDetails } from "../types/types";
+import { PlatformDetails } from "../types";
 
 function usePlatformDetails(): PlatformDetails {
   const [details, setDetails] = useState<PlatformDetails>(() => {

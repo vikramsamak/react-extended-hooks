@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { BatteryDetails } from "../types/types";
+import { BatteryDetails } from "../types";
 
 function useBatteryDetails(): BatteryDetails | null {
   const [batteryDetails, setBatteryDetails] = useState<BatteryDetails | null>(
