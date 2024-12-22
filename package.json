@@ -1,8 +1,32 @@
 {
   "name": "react-util-hooks",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": "Vikram Samak",
+  "description": "A collection of React custom hooks providing extended functionality for geolocation, platform details, battery status, and more.",
+  "keywords": [
+    "react",
+    "react-hooks",
+    "custom-hooks",
+    "geolocation",
+    "battery-status",
+    "platform-details",
+    "webcam",
+    "speech-synthesis",
+    "utility-hooks",
+    "frontend",
+    "typescript",
+    "react-library"
+  ],
+  "license": "MIT",
+  "main": "dist/react-util-hooks-umd.js",
+  "module": "dist/react-util-hooks-es.js",
+  "types": "dist/react-util-hooks-es.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc -b && vite build",
     "lint": "eslint .",
