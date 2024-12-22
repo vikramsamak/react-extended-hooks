@@ -3,22 +3,49 @@ import useBatteryDetails from "../hooks/useBatteryDetails";
 
 <Meta title="Hooks/useBatteryDetails" component={useBatteryDetails} />
 
-# `useBatteryDetails`
+# `useBatteryDetails` Hook
 
-The `useBatteryDetails` hook provides detailed information about the device's battery status, including charging status, charging time, discharging time, and battery level. This hook leverages the [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API).
+The `useBatteryDetails` hook provides detailed information about the device's battery status, including charging status, charging time, discharging time, and battery level. It also supports user-defined callback functions that are triggered when any of the battery properties change.
+
+This hook leverages the [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API).
+
+
+## Example Usage
 
 ---
 
-## Usage
-
-### Example
-
 ```tsx
-import React from "react";
+import React, { useState } from "react";
 import useBatteryDetails from "react-util-hooks";
 
 const BatteryDetailsComponent: React.FC = () => {
-  const batteryDetails = useBatteryDetails();
+  const [chargingStatus, setChargingStatus] = useState<string>("N/A");
+  const [batteryLevel, setBatteryLevel] = useState<string>("N/A");
+  const [chargingTimeStatus, setChargingTimeStatus] = useState<string>("N/A");
+  const [dischargingTimeStatus, setDischargingTimeStatus] =
+    useState<string>("N/A");
+
+  const batteryDetails = useBatteryDetails({
+    onChargingChange: (charging) =>
+      setChargingStatus(charging ? "Charging" : "Not Charging"),
+    onLevelChange: (level) => setBatteryLevel(`${level}%`),
+    onChargingTimeChange: (chargingTime) =>
+      setChargingTimeStatus(
+        chargingTime !== null
+          ? `${Math.floor(chargingTime / 60)} min ${Math.floor(
+              chargingTime % 60
+            )} sec`
+          : "N/A"
+      ),
+    onDischargingTimeChange: (dischargingTime) =>
+      setDischargingTimeStatus(
+        dischargingTime !== null
+          ? `${Math.floor(dischargingTime / 60)} min ${Math.floor(
+              dischargingTime % 60
+            )} sec`
+          : "N/A"
+      ),
+  });
 
   if (!batteryDetails) {
     return <div>Battery details are not available or not supported.</div>;
@@ -51,9 +78,67 @@ const BatteryDetailsComponent: React.FC = () => {
           <strong>Battery Level:</strong> {level !== null ? `${level}%` : "N/A"}
         </li>
       </ul>
+
+      <h3>Callback Outputs</h3>
+      <ul>
+        <li>
+          <strong>Charging Status:</strong> {chargingStatus}
+        </li>
+        <li>
+          <strong>Battery Level:</strong> {batteryLevel}
+        </li>
+        <li>
+          <strong>Charging Time:</strong> {chargingTimeStatus}
+        </li>
+        <li>
+          <strong>Discharging Time:</strong> {dischargingTimeStatus}
+        </li>
+      </ul>
     </div>
   );
 };
 
 export default BatteryDetailsComponent;
 ```
+
+---
+
+## API
+
+#### Parameters
+
+The hook accepts an optional configuration object with the following callbacks:
+
+- **`onChargingChange`**: `(charging: boolean) => void`  
+  Called when the charging status changes.
+
+- **`onLevelChange`**: `(level: number) => void`  
+  Called when the battery level changes.
+
+- **`onChargingTimeChange`**: `(chargingTime: number | null) => void`  
+  Called when the charging time changes.
+
+- **`onDischargingTimeChange`**: `(dischargingTime: number | null) => void`  
+  Called when the discharging time changes.  
+
+### Returns
+
+The hook returns an object with the following properties:
+
+- **`charging`**: `boolean`  
+  Indicates whether the device is charging.
+
+- **`level`**: `number | null`  
+  The battery level as a percentage (e.g., `80` for 80%).
+
+- **`chargingTime`**: `number | null`  
+  The estimated time (in seconds) until the battery is fully charged.
+
+- **`dischargingTime`**: `number | null`  
+  The estimated time (in seconds) until the battery is fully discharged.
+
+## Notes
+
+1. If the `Battery Status API` is not supported by the browser, the hook will return `null`.
+2. Callback functions are triggered only when their respective property changes.
+3. The hook automatically handles adding and removing event listeners for battery status updates.
