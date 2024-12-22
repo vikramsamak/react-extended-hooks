@@ -1,0 +1,131 @@
+import { Meta } from "@storybook/addon-docs";
+import useGeolocationDetails from "../hooks/useGeolocationDetails";
+
+<Meta title="Hooks/useGeolocationDetails" component={useGeolocationDetails} />
+
+# `useGeolocationDetails`
+
+The `useGeolocationDetails` hook provides detailed information about the user's current geolocation, leveraging the [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API). It supports custom options and can provide continuous geolocation updates.
+
+---
+
+## Features
+
+- Fetches the user's current geolocation details.
+- Supports options such as high accuracy, timeout, and maximum age for caching.
+- Provides continuous updates if enabled.
+- Returns comprehensive geolocation data, including latitude, longitude, accuracy, altitude, speed, and more.
+
+---
+
+## Usage
+
+### Example
+
+```tsx
+import React from "react";
+import useGeolocationDetails from "react-util-hooks";
+
+const GeolocationDetailsComponent: React.FC = () => {
+  const {
+    latitude,
+    longitude,
+    accuracy,
+    altitude,
+    altitudeAccuracy,
+    heading,
+    speed,
+    timestamp,
+    error,
+  } = useGeolocationDetails({
+    enableHighAccuracy: true,
+    timeout: 10000,
+    maximumAge: 5000,
+    enableWatch: true,
+  });
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!latitude || !longitude) {
+    return <div>Fetching geolocation details...</div>;
+  }
+
+  return (
+    <div>
+      <h3>Geolocation Details</h3>
+      <ul>
+        <li>
+          <strong>Latitude:</strong> {latitude}
+        </li>
+        <li>
+          <strong>Longitude:</strong> {longitude}
+        </li>
+        <li>
+          <strong>Accuracy:</strong> {accuracy} meters
+        </li>
+        <li>
+          <strong>Altitude:</strong>{" "}
+          {altitude !== null ? `${altitude} meters` : "N/A"}
+        </li>
+        <li>
+          <strong>Altitude Accuracy:</strong>{" "}
+          {altitudeAccuracy !== null ? `${altitudeAccuracy} meters` : "N/A"}
+        </li>
+        <li>
+          <strong>Heading:</strong> {heading !== null ? `${heading}°` : "N/A"}
+        </li>
+        <li>
+          <strong>Speed:</strong> {speed !== null ? `${speed} m/s` : "N/A"}
+        </li>
+        <li>
+          <strong>Timestamp:</strong>{" "}
+          {timestamp ? new Date(timestamp).toLocaleString() : "N/A"}
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+export default GeolocationDetailsComponent;
+```
+
+---
+
+## API
+
+### Parameters
+
+The hook accepts an optional configuration object:
+
+- **`enableHighAccuracy`** (`boolean`): Requests high-accuracy geolocation. Defaults to `false`.
+- **`timeout`** (`number`): Maximum time (in milliseconds) to wait for a response. Defaults to `Infinity`.
+- **`maximumAge`** (`number`): Maximum age (in milliseconds) of a cached position. Defaults to `0`.
+- **`enableWatch`** (`boolean`): Enables continuous geolocation updates. Defaults to `false`.
+
+---
+
+### Returns
+
+The hook returns an object containing the following properties:
+
+- **`latitude`** (`number | null`): Latitude in decimal degrees.
+- **`longitude`** (`number | null`): Longitude in decimal degrees.
+- **`accuracy`** (`number | null`): Accuracy of the location in meters.
+- **`altitude`** (`number | null`): Altitude in meters above sea level.
+- **`altitudeAccuracy`** (`number | null`): Accuracy of the altitude in meters.
+- **`heading`** (`number | null`): Direction of travel in degrees (0–360).
+- **`speed`** (`number | null`): Speed of travel in meters per second.
+- **`timestamp`** (`number | null`): Timestamp of when the position was retrieved.
+- **`error`** (`GeolocationPositionError | null`): Error details if geolocation retrieval fails.
+
+---
+
+## Notes
+
+- Ensure your browser supports the Geolocation API.
+- Users must grant permission for geolocation access.
+- Geolocation accuracy and availability depend on device hardware and environmental conditions.
+
+---
