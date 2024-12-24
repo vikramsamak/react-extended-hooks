@@ -19,7 +19,7 @@ A collection of utility hooks for React that leverage browser APIs to enhance yo
 ## Installation
 
 ```bash
-npm install react-util-hooks
+npm install react-extended-hooks
 ```
 
 ## Peer Dependencies
