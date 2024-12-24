@@ -1,0 +1,139 @@
+import { Meta } from "@storybook/addon-docs";
+import { useSpeechSynthesis } from "../hooks";
+
+<Meta title="Hooks/useSpeechSynthesis" component={useSpeechSynthesis} />
+
+# `useSpeechSynthesis`
+
+The `useSpeechSynthesis` hook provides a convenient way to interact with the Web Speech API for text-to-speech functionality. It allows you to control speech properties such as rate, pitch, volume, and voice selection.
+
+---
+
+## Usage
+
+### Example
+
+```tsx
+import React, { useState } from "react";
+import { useSpeechSynthesis } from "react-extended-hooks";
+
+const SpeechSynthesisComponent: React.FC = () => {
+  const [text, setText] = useState("Hello, this is a speech synthesis demo!");
+  const [rate, setRate] = useState(1);
+  const [pitch, setPitch] = useState(1);
+  const [volume, setVolume] = useState(1);
+  const [selectedVoice, setSelectedVoice] = useState("default");
+
+  const { speak, cancel, isSpeaking, voices } = useSpeechSynthesis({
+    rate,
+    pitch,
+    volume,
+    voiceURI: selectedVoice,
+  });
+
+  const handleVoiceChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedVoice(event.target.value);
+  };
+
+  const handleSpeak = () => {
+    speak(text);
+  };
+
+  return (
+    <div>
+      <h3>Speech Synthesis</h3>
+      <div>
+        <label>
+          <strong>Voice:</strong>
+        </label>
+        <select value={selectedVoice} onChange={handleVoiceChange}>
+          <option value="default">Default</option>
+          {voices.map((voice) => (
+            <option key={voice.voiceURI} value={voice.voiceURI}>
+              {voice.name} ({voice.lang})
+            </option>
+          ))}
+        </select>
+      </div>
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Enter text to speak"
+        rows={4}
+        cols={50}
+      />
+      <div>
+        <label>
+          <strong>Rate:</strong> {rate}
+        </label>
+        <input
+          type="range"
+          min="0.1"
+          max="2"
+          step="0.1"
+          value={rate}
+          onChange={(e) => setRate(Number(e.target.value))}
+        />
+      </div>
+      <div>
+        <label>
+          <strong>Pitch:</strong> {pitch}
+        </label>
+        <input
+          type="range"
+          min="0.5"
+          max="2"
+          step="0.1"
+          value={pitch}
+          onChange={(e) => setPitch(Number(e.target.value))}
+        />
+      </div>
+      <div>
+        <label>
+          <strong>Volume:</strong> {volume}
+        </label>
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.1"
+          value={volume}
+          onChange={(e) => setVolume(Number(e.target.value))}
+        />
+      </div>
+      <button onClick={handleSpeak} disabled={isSpeaking}>
+        {isSpeaking ? "Speaking..." : "Speak"}
+      </button>
+      <button onClick={cancel}>Cancel</button>
+    </div>
+  );
+};
+
+export default SpeechSynthesisComponent;
+```
+
+---
+
+## API
+
+### `useSpeechSynthesis`
+
+#### Parameters
+
+The hook accepts an optional configuration object:
+
+- `rate: number` - Controls the speech rate (default: `1.0`).
+- `pitch: number` - Controls the pitch of the voice (default: `1.0`).
+- `volume: number` - Controls the volume of the speech (default: `1.0`).
+- `voiceURI: string` - Specifies the voice to use. Use the `voices` array to retrieve available options.
+
+#### Returns
+
+The hook returns an object with the following properties:
+
+- `speak: (text: string) => void` - A function to start speaking the provided text.
+- `cancel: () => void` - A function to cancel the ongoing speech.
+- `isSpeaking: boolean` - A boolean indicating whether the text is currently being spoken.
+- `voices: SpeechSynthesisVoice[]` - An array of available voices.
+
+---
