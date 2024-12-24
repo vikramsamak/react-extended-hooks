@@ -19,6 +19,14 @@
     "react-library"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/vikramsamak/react-util-hooks#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vikramsamak/react-util-hooks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vikramsamak/react-util-hooks/issues"
+  },
   "main": "dist/react-util-hooks-umd.js",
   "module": "dist/react-util-hooks-es.js",
   "types": "dist/react-util-hooks-es.d.ts",
