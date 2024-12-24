@@ -26,11 +26,12 @@ export default defineConfig({
       fileName: (format) => `react-util-hooks-${format}.js`,
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      external: ["react", "react-dom", "lodash"],
       output: {
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
+          lodash: "_",
         },
       },
     },

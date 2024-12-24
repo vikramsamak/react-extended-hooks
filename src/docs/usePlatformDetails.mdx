@@ -5,25 +5,49 @@ import { usePlatformDetails } from "../hooks";
 
 # `usePlatformDetails` Hook
 
-The `usePlatformDetails` hook provides information about the user's platform. It returns the following details:
+The `usePlatformDetails` hook provides detailed information about the user's platform and network status. It is especially useful for applications that need to adjust behavior based on the user's environment or connectivity.
 
-- **userAgent**: The user agent string of the browser/platform.
-- **language**: The browser's language preference.
-- **onLine**: The user's current online status (true for online, false for offline).
+## Features
+
+- **userAgent**: Retrieves the user agent string of the browser/platform.
+- **language**: Provides the browser's language preference.
+- **onLine**: Indicates the user's current online status (`true` for online, `false` for offline).
+
+## Props
+
+The `usePlatformDetails` hook accepts the following optional configuration props:
+
+- **`trackOnlineStatus`** (`boolean`, default: `true`)  
+  Enables or disables tracking of the user's online/offline status.
+
+- **`debounceDelay`** (`number`, default: `300`)  
+  The delay (in milliseconds) for debouncing updates to the online status.
+
+- **`initialDetails`** (`object`, default: `{}`)  
+  Specifies initial platform details, such as:
+  - `userAgent`: A string representing the browser's user agent.
+  - `language`: A string representing the browser's language preference.
+  - `onLine`: A boolean indicating whether the user is online.
+
+---
 
 ## Example Usage
 
-Here’s an example of how to use the `usePlatformDetails` hook in your React component:
+Here’s how you can use the `usePlatformDetails` hook in your React component:
 
 ```tsx
 import React from "react";
 import { usePlatformDetails } from "react-util-hooks";
 
 const MyComponent: React.FC = () => {
-  const { userAgent, language, onLine } = usePlatformDetails();
+  const { userAgent, language, onLine } = usePlatformDetails({
+    trackOnlineStatus: true,
+    debounceDelay: 500,
+    initialDetails: { userAgent: "Custom UA", language: "en-US", onLine: true },
+  });
 
   return (
-    <div>
+    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h3>Platform Details:</h3>
       <ul>
         <li>
@@ -42,3 +66,27 @@ const MyComponent: React.FC = () => {
 
 export default MyComponent;
 ```
+
+---
+
+## API Reference
+
+### Return Values
+
+The hook returns an object with the following properties:
+
+- **`userAgent`** (`string`)  
+  The user agent string of the browser/platform.
+
+- **`language`** (`string`)  
+  The browser's language preference.
+
+- **`onLine`** (`boolean`)  
+  The user's current online status (`true` for online, `false` for offline`).
+
+---
+
+### Notes
+
+- The `debounceDelay` prop ensures efficient updates to the online status, minimizing unnecessary re-renders.
+- The `initialDetails` prop can be used to provide custom initial values for the returned details, especially useful in server-side rendering or testing.

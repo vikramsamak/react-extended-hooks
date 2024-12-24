@@ -3,3 +3,9 @@ export interface PlatformDetails {
   language: string;
   onLine: boolean;
 }
+
+export interface usePlatformDetailsProps {
+  trackOnlineStatus?: boolean;
+  debounceDelay?: number;
+  initialDetails?: Partial<PlatformDetails>;
+}

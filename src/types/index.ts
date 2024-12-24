@@ -3,7 +3,10 @@ export type {
   useBatteryDetailsProps,
 } from "./useBatteryDetails.types";
 
-export type { PlatformDetails } from "./usePlatformDetails.types";
+export type {
+  PlatformDetails,
+  usePlatformDetailsProps,
+} from "./usePlatformDetails.types";
 
 export type {
   GeolocationDetails,

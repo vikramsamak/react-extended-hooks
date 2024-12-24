@@ -9,8 +9,9 @@ export {
 //TYPES
 export type {
   BatteryDetails,
-  PlatformDetails,
   useBatteryDetailsProps,
+  PlatformDetails,
+  usePlatformDetailsProps,
   GeolocationDetails,
   useGeolocationProps,
   SpeechSynthesisDetails,

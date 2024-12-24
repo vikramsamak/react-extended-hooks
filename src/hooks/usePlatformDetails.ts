@@ -1,33 +1,51 @@
 import { useState, useEffect, useCallback } from "react";
-import { PlatformDetails } from "../types";
+import debounce from "lodash/debounce";
+import { PlatformDetails, usePlatformDetailsProps } from "../types";
 
-function usePlatformDetails(): PlatformDetails {
-  const [details, setDetails] = useState<PlatformDetails>(() => {
-    if (typeof navigator !== "undefined") {
-      const { userAgent, language, onLine } = navigator;
-      return { userAgent, language, onLine };
+function usePlatformDetails({
+  trackOnlineStatus = true,
+  debounceDelay = 0,
+  initialDetails = {},
+}: usePlatformDetailsProps = {}): PlatformDetails {
+  const [platformDetails, setPlatformDetails] = useState<PlatformDetails>(
+    () => {
+      if (typeof navigator !== "undefined") {
+        const { userAgent, language, onLine } = navigator;
+        return {
+          userAgent,
+          language,
+          onLine,
+          ...initialDetails,
+        };
+      }
+      return { userAgent: "", language: "", onLine: false, ...initialDetails };
     }
-    return { userAgent: "", language: "", onLine: false };
-  });
+  );
 
-  const updateOnlineStatus = useCallback((): void => {
-    setDetails((prev) => ({
+  const updateOnlineStatus = useCallback(() => {
+    setPlatformDetails((prev) => ({
       ...prev,
       onLine: navigator.onLine,
     }));
   }, []);
 
   useEffect(() => {
-    window.addEventListener("online", updateOnlineStatus);
-    window.addEventListener("offline", updateOnlineStatus);
+    if (!trackOnlineStatus) return;
+
+    const debouncedUpdate = debounce(updateOnlineStatus, debounceDelay);
+
+    window.addEventListener("online", debouncedUpdate);
+    window.addEventListener("offline", debouncedUpdate);
 
     return () => {
-      window.removeEventListener("online", updateOnlineStatus);
-      window.removeEventListener("offline", updateOnlineStatus);
-    };
-  }, [updateOnlineStatus]);
+      window.removeEventListener("online", debouncedUpdate);
+      window.removeEventListener("offline", debouncedUpdate);
 
-  return details;
+      debouncedUpdate.cancel();
+    };
+  }, [updateOnlineStatus, debounceDelay, trackOnlineStatus]);
+
+  return platformDetails;
 }
 
 export default usePlatformDetails;
