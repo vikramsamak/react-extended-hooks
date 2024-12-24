@@ -1,6 +1,6 @@
 {
   "name": "react-extended-hooks",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "author": "Vikram Samak",
   "description": "A collection of React custom hooks providing extended functionality for geolocation, platform details, battery status, and more.",
