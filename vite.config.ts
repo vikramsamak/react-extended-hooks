@@ -22,8 +22,8 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "react-util-hooks",
-      fileName: (format) => `react-util-hooks-${format}.js`,
+      name: "react-extended-hooks",
+      fileName: (format) => `react-extended-hooks-${format}.js`,
     },
     rollupOptions: {
       external: ["react", "react-dom", "lodash"],
