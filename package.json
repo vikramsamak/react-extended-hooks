@@ -27,9 +27,9 @@
   "bugs": {
     "url": "https://github.com/vikramsamak/react-extended-hooks/issues"
   },
-  "main": "dist/react-util-hooks-umd.js",
-  "module": "dist/react-util-hooks-es.js",
-  "types": "dist/react-util-hooks-es.d.ts",
+  "main": "dist/react-extended-hooks-umd.js",
+  "module": "dist/react-extended-hooks-es.js",
+  "types": "dist/react-extended-hooks-es.d.ts",
   "files": [
     "dist",
     "README.md",
