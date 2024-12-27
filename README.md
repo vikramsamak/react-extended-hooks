@@ -16,6 +16,9 @@ A collection of utility hooks for React that leverage browser APIs to enhance yo
 - **`usePlatformDetails`**  
   Retrieves platform-specific information such as user agent, browser language, and online status.
 
+- **`useClipBoardDetails`**  
+  Allows interaction with the clipboard, enabling copying text to the clipboard and reading clipboard content with built-in state tracking.
+  
 ## Installation
 
 ```bash
