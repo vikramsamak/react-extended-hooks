@@ -40,7 +40,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "npm-publish": "npm version patch && npm publish"
   },
   "dependencies": {
     "@storybook/builder-vite": "^8.4.7",
