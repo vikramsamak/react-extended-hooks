@@ -42,7 +42,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "format": "prettier --write .",
-    "test": "vitest",
+    "test": "vitest run",
     "npm-publish": "npm run build && npm version patch && npm publish"
   },
   "dependencies": {
