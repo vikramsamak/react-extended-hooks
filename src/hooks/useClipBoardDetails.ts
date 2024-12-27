@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { ClipBoardDetails } from "../types";
+import { useState } from 'react';
+import { ClipBoardDetails } from '../types';
 
 function useClipBoardDetails(): ClipBoardDetails {
-  const [copiedText, setCopiedText] = useState<string>("");
+  const [copiedText, setCopiedText] = useState<string>('');
   const [isCopied, setIsCopied] = useState<boolean>(false);
-  const [clipboardContent, setClipboardContent] = useState<string>("");
+  const [clipboardContent, setClipboardContent] = useState<string>('');
 
   const copyToClipboard = async (text: string): Promise<void> => {
     try {
@@ -14,7 +14,7 @@ function useClipBoardDetails(): ClipBoardDetails {
 
       setTimeout(() => setIsCopied(false), 2000);
     } catch (error) {
-      console.error("Failed to copy text: ", error);
+      console.error('Failed to copy text: ', error);
       setIsCopied(false);
     }
   };
@@ -24,7 +24,7 @@ function useClipBoardDetails(): ClipBoardDetails {
       const text = await navigator.clipboard.readText();
       setClipboardContent(text);
     } catch (error) {
-      console.error("Failed to read from clipboard: ", error);
+      console.error('Failed to read from clipboard: ', error);
     }
   };
 

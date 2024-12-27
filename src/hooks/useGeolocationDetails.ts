@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { GeolocationDetails, useGeolocationProps } from "../types";
+import { useState, useEffect } from 'react';
+import { GeolocationDetails, useGeolocationProps } from '../types';
 
 function useGeolocationDetails({
   enableHighAccuracy = false,
@@ -21,8 +21,8 @@ function useGeolocationDetails({
     });
 
   useEffect(() => {
-    if (!("geolocation" in navigator)) {
-      console.warn("Geolocation API is not supported in this browser.");
+    if (!('geolocation' in navigator)) {
+      console.warn('Geolocation API is not supported in this browser.');
       setGeolocationDetails({
         latitude: null,
         longitude: null,

@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { useClipBoardDetails } from "../hooks";
+import { useState } from 'react';
+import { useClipBoardDetails } from '../hooks';
 
 export default {
-  title: "Hooks/useClipBoardDetails",
+  title: 'Hooks/useClipBoardDetails',
   component: useClipBoardDetails,
   argTypes: {
     initialText: {
-      control: "text",
-      defaultValue: "Hello, Clipboard!",
+      control: 'text',
+      defaultValue: 'Hello, Clipboard!',
     },
     delay: {
-      control: { type: "range", min: 1000, max: 5000, step: 500 },
+      control: { type: 'range', min: 1000, max: 5000, step: 500 },
       defaultValue: 2000,
     },
   },
@@ -40,7 +40,7 @@ export const Default = ({
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h3>useClipBoardDetails Hook</h3>
       <div>
         <label>
@@ -51,25 +51,25 @@ export const Default = ({
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           style={{
-            display: "block",
-            width: "100%",
-            padding: "8px",
-            margin: "10px 0",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
+            display: 'block',
+            width: '100%',
+            padding: '8px',
+            margin: '10px 0',
+            border: '1px solid #ccc',
+            borderRadius: '4px',
           }}
         />
       </div>
       <button
         onClick={handleCopy}
         style={{
-          margin: "10px 5px 10px 0",
-          padding: "10px 15px",
-          cursor: "pointer",
-          backgroundColor: "#4caf50",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
+          margin: '10px 5px 10px 0',
+          padding: '10px 15px',
+          cursor: 'pointer',
+          backgroundColor: '#4caf50',
+          color: 'white',
+          border: 'none',
+          borderRadius: '4px',
         }}
       >
         Copy to Clipboard
@@ -77,27 +77,27 @@ export const Default = ({
       <button
         onClick={readFromClipboard}
         style={{
-          margin: "10px",
-          padding: "10px 15px",
-          cursor: "pointer",
-          backgroundColor: "#2196f3",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
+          margin: '10px',
+          padding: '10px 15px',
+          cursor: 'pointer',
+          backgroundColor: '#2196f3',
+          color: 'white',
+          border: 'none',
+          borderRadius: '4px',
         }}
       >
         Read from Clipboard
       </button>
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: '20px' }}>
         <strong>Status:</strong>
         <p>
-          <strong>Copied Text:</strong> {copiedText || "N/A"}
+          <strong>Copied Text:</strong> {copiedText || 'N/A'}
         </p>
         <p>
-          <strong>Clipboard Content:</strong> {clipboardContent || "N/A"}
+          <strong>Clipboard Content:</strong> {clipboardContent || 'N/A'}
         </p>
         <p>
-          <strong>Is Copied:</strong> {isCopied ? "Yes" : "No"}
+          <strong>Is Copied:</strong> {isCopied ? 'Yes' : 'No'}
         </p>
       </div>
     </div>

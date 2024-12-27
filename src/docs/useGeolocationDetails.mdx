@@ -1,5 +1,5 @@
-import { Meta } from "@storybook/addon-docs";
-import { useGeolocationDetails } from "../hooks";
+import { Meta } from '@storybook/addon-docs';
+import { useGeolocationDetails } from '../hooks';
 
 <Meta title="Hooks/useGeolocationDetails" component={useGeolocationDetails} />
 
@@ -23,8 +23,8 @@ The `useGeolocationDetails` hook provides detailed information about the user's 
 ### Example
 
 ```tsx
-import React from "react";
-import useGeolocationDetails from "react-util-hooks";
+import React from 'react';
+import useGeolocationDetails from 'react-util-hooks';
 
 const GeolocationDetailsComponent: React.FC = () => {
   const {
@@ -66,22 +66,22 @@ const GeolocationDetailsComponent: React.FC = () => {
           <strong>Accuracy:</strong> {accuracy} meters
         </li>
         <li>
-          <strong>Altitude:</strong>{" "}
-          {altitude !== null ? `${altitude} meters` : "N/A"}
+          <strong>Altitude:</strong>{' '}
+          {altitude !== null ? `${altitude} meters` : 'N/A'}
         </li>
         <li>
-          <strong>Altitude Accuracy:</strong>{" "}
-          {altitudeAccuracy !== null ? `${altitudeAccuracy} meters` : "N/A"}
+          <strong>Altitude Accuracy:</strong>{' '}
+          {altitudeAccuracy !== null ? `${altitudeAccuracy} meters` : 'N/A'}
         </li>
         <li>
-          <strong>Heading:</strong> {heading !== null ? `${heading}°` : "N/A"}
+          <strong>Heading:</strong> {heading !== null ? `${heading}°` : 'N/A'}
         </li>
         <li>
-          <strong>Speed:</strong> {speed !== null ? `${speed} m/s` : "N/A"}
+          <strong>Speed:</strong> {speed !== null ? `${speed} m/s` : 'N/A'}
         </li>
         <li>
-          <strong>Timestamp:</strong>{" "}
-          {timestamp ? new Date(timestamp).toLocaleString() : "N/A"}
+          <strong>Timestamp:</strong>{' '}
+          {timestamp ? new Date(timestamp).toLocaleString() : 'N/A'}
         </li>
       </ul>
     </div>

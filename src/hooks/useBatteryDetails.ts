@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { BatteryDetails, useBatteryDetailsProps } from "../types";
+import { useEffect, useState } from 'react';
+import { BatteryDetails, useBatteryDetailsProps } from '../types';
 
 function useBatteryDetails({
   onChargingChange,
@@ -13,7 +13,7 @@ function useBatteryDetails({
 
   useEffect(() => {
     const getBatteryDetails = async () => {
-      if ("getBattery" in navigator) {
+      if ('getBattery' in navigator) {
         try {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           //@ts-ignore
@@ -54,32 +54,32 @@ function useBatteryDetails({
 
           updateBatteryDetails();
 
-          battery.addEventListener("chargingchange", updateBatteryDetails);
-          battery.addEventListener("levelchange", updateBatteryDetails);
-          battery.addEventListener("chargingtimechange", updateBatteryDetails);
+          battery.addEventListener('chargingchange', updateBatteryDetails);
+          battery.addEventListener('levelchange', updateBatteryDetails);
+          battery.addEventListener('chargingtimechange', updateBatteryDetails);
           battery.addEventListener(
-            "dischargingtimechange",
+            'dischargingtimechange',
             updateBatteryDetails
           );
 
           return () => {
-            battery.removeEventListener("chargingchange", updateBatteryDetails);
-            battery.removeEventListener("levelchange", updateBatteryDetails);
+            battery.removeEventListener('chargingchange', updateBatteryDetails);
+            battery.removeEventListener('levelchange', updateBatteryDetails);
             battery.removeEventListener(
-              "chargingtimechange",
+              'chargingtimechange',
               updateBatteryDetails
             );
             battery.removeEventListener(
-              "dischargingtimechange",
+              'dischargingtimechange',
               updateBatteryDetails
             );
           };
         } catch (error) {
-          console.error("Failed to get battery details:", error);
+          console.error('Failed to get battery details:', error);
           setBatteryDetails(null);
         }
       } else {
-        console.warn("Battery Status API is not supported in this browser.");
+        console.warn('Battery Status API is not supported in this browser.');
         setBatteryDetails(null);
       }
     };

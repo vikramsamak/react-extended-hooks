@@ -1,24 +1,24 @@
-import { useState } from "react";
-import { useSpeechSynthesis } from "../hooks";
+import { useState } from 'react';
+import { useSpeechSynthesis } from '../hooks';
 
 export default {
-  title: "Hooks/useSpeechSynthesis",
+  title: 'Hooks/useSpeechSynthesis',
   component: useSpeechSynthesis,
   argTypes: {
     text: {
-      control: "text",
-      defaultValue: "Hello, this is a speech synthesis demo!",
+      control: 'text',
+      defaultValue: 'Hello, this is a speech synthesis demo!',
     },
     rate: {
-      control: { type: "range", min: 0.1, max: 2, step: 0.1 },
+      control: { type: 'range', min: 0.1, max: 2, step: 0.1 },
       defaultValue: 1,
     },
     pitch: {
-      control: { type: "range", min: 0.5, max: 2, step: 0.1 },
+      control: { type: 'range', min: 0.5, max: 2, step: 0.1 },
       defaultValue: 1,
     },
     volume: {
-      control: { type: "range", min: 0, max: 1, step: 0.1 },
+      control: { type: 'range', min: 0, max: 1, step: 0.1 },
       defaultValue: 1,
     },
   },
@@ -35,7 +35,7 @@ export const Default = ({
   pitch: number;
   volume: number;
 }) => {
-  const [selectedVoice, setSelectedVoice] = useState("default");
+  const [selectedVoice, setSelectedVoice] = useState('default');
   const { speak, cancel, isSpeaking, voices } = useSpeechSynthesis({
     rate,
     pitch,
@@ -52,7 +52,7 @@ export const Default = ({
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h3>Speech Synthesis</h3>
       <div>
         <label>
@@ -61,7 +61,7 @@ export const Default = ({
         <select
           value={selectedVoice}
           onChange={handleVoiceChange}
-          style={{ marginLeft: "10px" }}
+          style={{ marginLeft: '10px' }}
         >
           <option value="default">Default</option>
           {voices.map((voice) => (
@@ -74,17 +74,17 @@ export const Default = ({
       <button
         onClick={handleSpeak}
         disabled={isSpeaking}
-        style={{ margin: "10px", padding: "5px 10px", cursor: "pointer" }}
+        style={{ margin: '10px', padding: '5px 10px', cursor: 'pointer' }}
       >
-        {isSpeaking ? "Speaking..." : "Speak"}
+        {isSpeaking ? 'Speaking...' : 'Speak'}
       </button>
       <button
         onClick={cancel}
-        style={{ margin: "10px", padding: "5px 10px", cursor: "pointer" }}
+        style={{ margin: '10px', padding: '5px 10px', cursor: 'pointer' }}
       >
         Cancel
       </button>
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: '20px' }}>
         <strong>Text to Speak:</strong>
         <p>{text}</p>
         <p>

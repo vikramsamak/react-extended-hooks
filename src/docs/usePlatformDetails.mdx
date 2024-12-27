@@ -1,5 +1,5 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
-import { usePlatformDetails } from "../hooks";
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { usePlatformDetails } from '../hooks';
 
 <Meta title="Hooks/usePlatformDetails" component={usePlatformDetails} />
 
@@ -36,18 +36,18 @@ The `usePlatformDetails` hook accepts the following optional configuration props
 Here’s how you can use the `usePlatformDetails` hook in your React component:
 
 ```tsx
-import React from "react";
-import { usePlatformDetails } from "react-util-hooks";
+import React from 'react';
+import { usePlatformDetails } from 'react-util-hooks';
 
 const MyComponent: React.FC = () => {
   const { userAgent, language, onLine } = usePlatformDetails({
     trackOnlineStatus: true,
     debounceDelay: 500,
-    initialDetails: { userAgent: "Custom UA", language: "en-US", onLine: true },
+    initialDetails: { userAgent: 'Custom UA', language: 'en-US', onLine: true },
   });
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h3>Platform Details:</h3>
       <ul>
         <li>
@@ -57,7 +57,7 @@ const MyComponent: React.FC = () => {
           <strong>Language:</strong> {language}
         </li>
         <li>
-          <strong>Online Status:</strong> {onLine ? "Online" : "Offline"}
+          <strong>Online Status:</strong> {onLine ? 'Online' : 'Offline'}
         </li>
       </ul>
     </div>

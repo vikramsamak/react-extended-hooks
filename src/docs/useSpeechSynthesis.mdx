@@ -1,5 +1,5 @@
-import { Meta } from "@storybook/addon-docs";
-import { useSpeechSynthesis } from "../hooks";
+import { Meta } from '@storybook/addon-docs';
+import { useSpeechSynthesis } from '../hooks';
 
 <Meta title="Hooks/useSpeechSynthesis" component={useSpeechSynthesis} />
 
@@ -14,15 +14,15 @@ The `useSpeechSynthesis` hook provides a convenient way to interact with the Web
 ### Example
 
 ```tsx
-import React, { useState } from "react";
-import { useSpeechSynthesis } from "react-extended-hooks";
+import React, { useState } from 'react';
+import { useSpeechSynthesis } from 'react-extended-hooks';
 
 const SpeechSynthesisComponent: React.FC = () => {
-  const [text, setText] = useState("Hello, this is a speech synthesis demo!");
+  const [text, setText] = useState('Hello, this is a speech synthesis demo!');
   const [rate, setRate] = useState(1);
   const [pitch, setPitch] = useState(1);
   const [volume, setVolume] = useState(1);
-  const [selectedVoice, setSelectedVoice] = useState("default");
+  const [selectedVoice, setSelectedVoice] = useState('default');
 
   const { speak, cancel, isSpeaking, voices } = useSpeechSynthesis({
     rate,
@@ -102,7 +102,7 @@ const SpeechSynthesisComponent: React.FC = () => {
         />
       </div>
       <button onClick={handleSpeak} disabled={isSpeaking}>
-        {isSpeaking ? "Speaking..." : "Speak"}
+        {isSpeaking ? 'Speaking...' : 'Speak'}
       </button>
       <button onClick={cancel}>Cancel</button>
     </div>

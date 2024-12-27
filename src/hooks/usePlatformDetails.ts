@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
-import debounce from "lodash/debounce";
-import { PlatformDetails, usePlatformDetailsProps } from "../types";
+import { useState, useEffect, useCallback } from 'react';
+import debounce from 'lodash/debounce';
+import { PlatformDetails, usePlatformDetailsProps } from '../types';
 
 function usePlatformDetails({
   trackOnlineStatus = true,
@@ -9,7 +9,7 @@ function usePlatformDetails({
 }: usePlatformDetailsProps = {}): PlatformDetails {
   const [platformDetails, setPlatformDetails] = useState<PlatformDetails>(
     () => {
-      if (typeof navigator !== "undefined") {
+      if (typeof navigator !== 'undefined') {
         const { userAgent, language, onLine } = navigator;
         return {
           userAgent,
@@ -18,7 +18,7 @@ function usePlatformDetails({
           ...initialDetails,
         };
       }
-      return { userAgent: "", language: "", onLine: false, ...initialDetails };
+      return { userAgent: '', language: '', onLine: false, ...initialDetails };
     }
   );
 
@@ -34,12 +34,12 @@ function usePlatformDetails({
 
     const debouncedUpdate = debounce(updateOnlineStatus, debounceDelay);
 
-    window.addEventListener("online", debouncedUpdate);
-    window.addEventListener("offline", debouncedUpdate);
+    window.addEventListener('online', debouncedUpdate);
+    window.addEventListener('offline', debouncedUpdate);
 
     return () => {
-      window.removeEventListener("online", debouncedUpdate);
-      window.removeEventListener("offline", debouncedUpdate);
+      window.removeEventListener('online', debouncedUpdate);
+      window.removeEventListener('offline', debouncedUpdate);
 
       debouncedUpdate.cancel();
     };

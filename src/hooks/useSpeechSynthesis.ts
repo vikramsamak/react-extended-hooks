@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { SpeechSynthesisDetails, useSpeechSynthesisProps } from "../types";
+import { useState, useEffect, useRef } from 'react';
+import { SpeechSynthesisDetails, useSpeechSynthesisProps } from '../types';
 
 function useSpeechSynthesis({
   onStart,
@@ -20,20 +20,20 @@ function useSpeechSynthesis({
       setVoices(availableVoices);
     };
 
-    if ("speechSynthesis" in window) {
+    if ('speechSynthesis' in window) {
       window.speechSynthesis.addEventListener(
-        "voiceschanged",
+        'voiceschanged',
         handleVoicesChanged
       );
       handleVoicesChanged();
     } else {
-      console.warn("SpeechSynthesis API is not supported in this browser.");
+      console.warn('SpeechSynthesis API is not supported in this browser.');
     }
 
     return () => {
-      if ("speechSynthesis" in window) {
+      if ('speechSynthesis' in window) {
         window.speechSynthesis.removeEventListener(
-          "voiceschanged",
+          'voiceschanged',
           handleVoicesChanged
         );
       }
@@ -41,13 +41,13 @@ function useSpeechSynthesis({
   }, []);
 
   const speak = (text: string) => {
-    if (!("speechSynthesis" in window)) {
-      console.warn("SpeechSynthesis API is not supported in this browser.");
+    if (!('speechSynthesis' in window)) {
+      console.warn('SpeechSynthesis API is not supported in this browser.');
       return;
     }
 
     if (isSpeaking) {
-      console.warn("Speech is already in progress.");
+      console.warn('Speech is already in progress.');
       return;
     }
 
@@ -64,7 +64,7 @@ function useSpeechSynthesis({
         utterance.voice = selectedVoice;
       } else {
         console.warn(
-          "Specified voiceURI not found. Default voice will be used."
+          'Specified voiceURI not found. Default voice will be used.'
         );
       }
     }
@@ -88,7 +88,7 @@ function useSpeechSynthesis({
   };
 
   const cancel = () => {
-    if (!("speechSynthesis" in window)) return;
+    if (!('speechSynthesis' in window)) return;
 
     window.speechSynthesis.cancel();
     setIsSpeaking(false);

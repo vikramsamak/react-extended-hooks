@@ -1,31 +1,31 @@
-import { useGeolocationDetails } from "../hooks";
-import { GeolocationDetails } from "../types";
+import { useGeolocationDetails } from '../hooks';
+import { GeolocationDetails } from '../types';
 
 export default {
-  title: "Hooks/useGeolocationDetails",
+  title: 'Hooks/useGeolocationDetails',
   component: useGeolocationDetails,
   argTypes: {
     enableHighAccuracy: {
-      control: { type: "boolean" },
+      control: { type: 'boolean' },
       defaultValue: true,
-      description: "Request high-accuracy geolocation.",
+      description: 'Request high-accuracy geolocation.',
     },
     timeout: {
-      control: { type: "number" },
+      control: { type: 'number' },
       defaultValue: 10000,
-      description: "Maximum time (in milliseconds) to wait for a response.",
+      description: 'Maximum time (in milliseconds) to wait for a response.',
     },
     maximumAge: {
-      control: { type: "number" },
+      control: { type: 'number' },
       defaultValue: 5000,
       description:
-        "Maximum age (in milliseconds) of a cached position that is acceptable to return.",
+        'Maximum age (in milliseconds) of a cached position that is acceptable to return.',
     },
     enableWatch: {
-      control: { type: "boolean" },
+      control: { type: 'boolean' },
       defaultValue: true,
       description:
-        "Enable continuous updates of the geolocation position if true.",
+        'Enable continuous updates of the geolocation position if true.',
     },
   },
 };
@@ -80,22 +80,22 @@ export const Default = ({
           <strong>Accuracy:</strong> {accuracy} meters
         </li>
         <li>
-          <strong>Altitude:</strong>{" "}
-          {altitude !== null ? `${altitude} meters` : "N/A"}
+          <strong>Altitude:</strong>{' '}
+          {altitude !== null ? `${altitude} meters` : 'N/A'}
         </li>
         <li>
-          <strong>Altitude Accuracy:</strong>{" "}
-          {altitudeAccuracy !== null ? `${altitudeAccuracy} meters` : "N/A"}
+          <strong>Altitude Accuracy:</strong>{' '}
+          {altitudeAccuracy !== null ? `${altitudeAccuracy} meters` : 'N/A'}
         </li>
         <li>
-          <strong>Heading:</strong> {heading !== null ? `${heading}°` : "N/A"}
+          <strong>Heading:</strong> {heading !== null ? `${heading}°` : 'N/A'}
         </li>
         <li>
-          <strong>Speed:</strong> {speed !== null ? `${speed} m/s` : "N/A"}
+          <strong>Speed:</strong> {speed !== null ? `${speed} m/s` : 'N/A'}
         </li>
         <li>
-          <strong>Timestamp:</strong>{" "}
-          {timestamp ? new Date(timestamp).toLocaleString() : "N/A"}
+          <strong>Timestamp:</strong>{' '}
+          {timestamp ? new Date(timestamp).toLocaleString() : 'N/A'}
         </li>
       </ul>
     </div>

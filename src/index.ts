@@ -5,7 +5,7 @@ export {
   useGeolocationDetails,
   useSpeechSynthesis,
   useClipBoardDetails,
-} from "./hooks";
+} from './hooks';
 
 //TYPES
 export type {
@@ -18,4 +18,4 @@ export type {
   SpeechSynthesisDetails,
   useSpeechSynthesisProps,
   ClipBoardDetails,
-} from "./types";
+} from './types';

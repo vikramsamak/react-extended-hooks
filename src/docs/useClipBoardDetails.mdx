@@ -1,5 +1,5 @@
-import { Meta } from "@storybook/addon-docs";
-import useClipBoardDetails from "../hooks/useClipBoardDetails";
+import { Meta } from '@storybook/addon-docs';
+import useClipBoardDetails from '../hooks/useClipBoardDetails';
 
 <Meta title="Hooks/useClipBoardDetails" component={useClipBoardDetails} />
 
@@ -14,11 +14,11 @@ This hook leverages the modern [Clipboard API](https://developer.mozilla.org/en-
 ## Example Usage
 
 ```tsx
-import React, { useState } from "react";
-import useClipBoardDetails from "react-extended-hooks";
+import React, { useState } from 'react';
+import useClipBoardDetails from 'react-extended-hooks';
 
 const ClipboardDemoComponent: React.FC = () => {
-  const [inputText, setInputText] = useState("Hello, Clipboard!");
+  const [inputText, setInputText] = useState('Hello, Clipboard!');
   const {
     copiedText,
     isCopied,
@@ -28,7 +28,7 @@ const ClipboardDemoComponent: React.FC = () => {
   } = useClipBoardDetails();
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h3>Clipboard Demo</h3>
       <div>
         <label>
@@ -39,25 +39,25 @@ const ClipboardDemoComponent: React.FC = () => {
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           style={{
-            display: "block",
-            width: "100%",
-            padding: "8px",
-            margin: "10px 0",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
+            display: 'block',
+            width: '100%',
+            padding: '8px',
+            margin: '10px 0',
+            border: '1px solid #ccc',
+            borderRadius: '4px',
           }}
         />
       </div>
       <button
         onClick={() => copyToClipboard(inputText)}
         style={{
-          margin: "10px",
-          padding: "10px 15px",
-          backgroundColor: "#4caf50",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
+          margin: '10px',
+          padding: '10px 15px',
+          backgroundColor: '#4caf50',
+          color: 'white',
+          border: 'none',
+          borderRadius: '4px',
+          cursor: 'pointer',
         }}
       >
         Copy to Clipboard
@@ -65,27 +65,27 @@ const ClipboardDemoComponent: React.FC = () => {
       <button
         onClick={readFromClipboard}
         style={{
-          margin: "10px",
-          padding: "10px 15px",
-          backgroundColor: "#2196f3",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
+          margin: '10px',
+          padding: '10px 15px',
+          backgroundColor: '#2196f3',
+          color: 'white',
+          border: 'none',
+          borderRadius: '4px',
+          cursor: 'pointer',
         }}
       >
         Read from Clipboard
       </button>
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: '20px' }}>
         <strong>Status:</strong>
         <p>
-          <strong>Copied Text:</strong> {copiedText || "N/A"}
+          <strong>Copied Text:</strong> {copiedText || 'N/A'}
         </p>
         <p>
-          <strong>Clipboard Content:</strong> {clipboardContent || "N/A"}
+          <strong>Clipboard Content:</strong> {clipboardContent || 'N/A'}
         </p>
         <p>
-          <strong>Is Copied:</strong> {isCopied ? "Yes" : "No"}
+          <strong>Is Copied:</strong> {isCopied ? 'Yes' : 'No'}
         </p>
       </div>
     </div>

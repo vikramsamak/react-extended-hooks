@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import { useBatteryDetails } from "../hooks";
-import { BatteryDetails } from "../types";
+import React, { useState } from 'react';
+import { useBatteryDetails } from '../hooks';
+import { BatteryDetails } from '../types';
 
 export default {
-  title: "Hooks/useBatteryDetails",
+  title: 'Hooks/useBatteryDetails',
   component: useBatteryDetails,
 };
 
 export const Default: React.FC = () => {
-  const [chargingStatus, setChargingStatus] = useState<string>("N/A");
-  const [batteryLevel, setBatteryLevel] = useState<string>("N/A");
-  const [chargingTimeStatus, setChargingTimeStatus] = useState<string>("N/A");
+  const [chargingStatus, setChargingStatus] = useState<string>('N/A');
+  const [batteryLevel, setBatteryLevel] = useState<string>('N/A');
+  const [chargingTimeStatus, setChargingTimeStatus] = useState<string>('N/A');
   const [dischargingTimeStatus, setDischargingTimeStatus] =
-    useState<string>("N/A");
+    useState<string>('N/A');
 
   const batteryDetails: BatteryDetails | null = useBatteryDetails({
     onChargingChange: (charging) =>
-      setChargingStatus(charging ? "Charging" : "Not Charging"),
+      setChargingStatus(charging ? 'Charging' : 'Not Charging'),
     onLevelChange: (level) => setBatteryLevel(`${level}%`),
     onChargingTimeChange: (chargingTime) =>
       setChargingTimeStatus(
@@ -24,7 +24,7 @@ export const Default: React.FC = () => {
           ? `${Math.floor(chargingTime / 60)} min ${Math.floor(
               chargingTime % 60
             )} sec`
-          : "N/A"
+          : 'N/A'
       ),
     onDischargingTimeChange: (dischargingTime) =>
       setDischargingTimeStatus(
@@ -32,7 +32,7 @@ export const Default: React.FC = () => {
           ? `${Math.floor(dischargingTime / 60)} min ${Math.floor(
               dischargingTime % 60
             )} sec`
-          : "N/A"
+          : 'N/A'
       ),
   });
 
@@ -44,10 +44,10 @@ export const Default: React.FC = () => {
 
   const formatTime = (time: number | null): string => {
     if (time === null) {
-      return "N/A";
+      return 'N/A';
     }
     if (time === Infinity) {
-      return "Unknown";
+      return 'Unknown';
     }
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
@@ -59,7 +59,7 @@ export const Default: React.FC = () => {
       <h3>Battery Details</h3>
       <ul>
         <li>
-          <strong>Charging:</strong> {charging ? "Yes" : "No"}
+          <strong>Charging:</strong> {charging ? 'Yes' : 'No'}
         </li>
         <li>
           <strong>Charging Time:</strong> {formatTime(chargingTime)}
@@ -69,7 +69,7 @@ export const Default: React.FC = () => {
         </li>
         <li>
           <strong>Battery Level:</strong>
-          {level !== null ? `${level}%` : "N/A"}
+          {level !== null ? `${level}%` : 'N/A'}
         </li>
       </ul>
 

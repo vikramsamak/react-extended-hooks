@@ -1,21 +1,21 @@
 export type {
   BatteryDetails,
   useBatteryDetailsProps,
-} from "./useBatteryDetails.types";
+} from './useBatteryDetails.types';
 
 export type {
   PlatformDetails,
   usePlatformDetailsProps,
-} from "./usePlatformDetails.types";
+} from './usePlatformDetails.types';
 
 export type {
   GeolocationDetails,
   useGeolocationProps,
-} from "./useGeolocationDetails.types";
+} from './useGeolocationDetails.types';
 
 export type {
   SpeechSynthesisDetails,
   useSpeechSynthesisProps,
-} from "./useSpeechSynthesis.types";
+} from './useSpeechSynthesis.types';
 
-export type { ClipBoardDetails } from "./useClipBoardDetails.types";
+export type { ClipBoardDetails } from './useClipBoardDetails.types';

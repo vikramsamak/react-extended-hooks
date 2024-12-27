@@ -1,26 +1,26 @@
-import { usePlatformDetails } from "../hooks";
-import { PlatformDetails } from "../types";
+import { usePlatformDetails } from '../hooks';
+import { PlatformDetails } from '../types';
 
 export default {
-  title: "Hooks/usePlatformDetails",
+  title: 'Hooks/usePlatformDetails',
   component: usePlatformDetails,
   argTypes: {
     trackOnlineStatus: {
-      control: "boolean",
+      control: 'boolean',
       defaultValue: true,
-      description: "Enable or disable tracking of online/offline status",
+      description: 'Enable or disable tracking of online/offline status',
     },
     debounceDelay: {
-      control: { type: "number", min: 0, step: 100 },
+      control: { type: 'number', min: 0, step: 100 },
       defaultValue: 300,
       description:
-        "Delay in milliseconds for debouncing online/offline updates",
+        'Delay in milliseconds for debouncing online/offline updates',
     },
     initialDetails: {
-      control: "object",
+      control: 'object',
       defaultValue: {},
       description:
-        "Specify initial platform details (e.g., userAgent, language)",
+        'Specify initial platform details (e.g., userAgent, language)',
     },
   },
 };
@@ -41,7 +41,7 @@ export const Default = ({
   });
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h3>Platform Details:</h3>
       <ul>
         <li>
@@ -51,15 +51,15 @@ export const Default = ({
           <strong>Language:</strong> {language}
         </li>
         <li>
-          <strong>Online Status:</strong> {onLine ? "Online" : "Offline"}
+          <strong>Online Status:</strong> {onLine ? 'Online' : 'Offline'}
         </li>
       </ul>
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: '20px' }}>
         <strong>Hook Props:</strong>
         <ul>
           <li>
-            <strong>trackOnlineStatus:</strong>{" "}
-            {trackOnlineStatus ? "Enabled" : "Disabled"}
+            <strong>trackOnlineStatus:</strong>{' '}
+            {trackOnlineStatus ? 'Enabled' : 'Disabled'}
           </li>
           <li>
             <strong>debounceDelay:</strong> {debounceDelay} ms
