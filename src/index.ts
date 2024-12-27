@@ -4,6 +4,7 @@ export {
   useBatteryDetails,
   useGeolocationDetails,
   useSpeechSynthesis,
+  useClipBoardDetails,
 } from "./hooks";
 
 //TYPES
@@ -16,4 +17,5 @@ export type {
   useGeolocationProps,
   SpeechSynthesisDetails,
   useSpeechSynthesisProps,
+  ClipBoardDetails,
 } from "./types";

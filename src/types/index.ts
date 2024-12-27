@@ -17,3 +17,5 @@ export type {
   SpeechSynthesisDetails,
   useSpeechSynthesisProps,
 } from "./useSpeechSynthesis.types";
+
+export type { ClipBoardDetails } from "./useClipBoardDetails.types";
