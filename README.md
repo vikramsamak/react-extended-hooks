@@ -42,7 +42,7 @@ npm install react react-dom lodash
 ## Documentation
 
 Comprehensive documentation and usage examples are available at:  
-[https://react-extended-hooks-storybook.vercel.app/](https://react-extended-hooks-storybook.vercel.app/)
+[react-extended-hooks-storybook](https://react-extended-hooks-storybook.vercel.app/)
 
 ---
 
