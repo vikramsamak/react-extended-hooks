@@ -15,7 +15,7 @@ This hook leverages the [Battery Status API](https://developer.mozilla.org/en-US
 
 ```tsx
 import React, { useState } from 'react';
-import useBatteryDetails from 'react-util-hooks';
+import { useBatteryDetails } from 'react-util-hooks';
 
 const BatteryDetailsComponent: React.FC = () => {
   const [chargingStatus, setChargingStatus] = useState<string>('N/A');
